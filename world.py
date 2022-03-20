@@ -28,7 +28,7 @@ class world:
 
         #test level
         p1 = block(100, self.worldSizeY - 300, 0, 200, 30, "ground", settings.WHITE)
-        p2 = block(300, self.worldSizeY - 200, 0, 100, 30, "ground", settings.WHITE)
+        p2 = block(200, self.worldSizeY - 200, 0, 300, 30, "ground", settings.WHITE)
         p3 = block(500, self.worldSizeY - 400, 0, 100, 30, "ground", settings.WHITE)
 
         self.entityList.append(p)

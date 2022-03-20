@@ -20,12 +20,19 @@ class camera:
         self.x = obj.x - settings.CENTERWIDTH
         self.y = obj.y - settings.CENTERHEIGHT
 
-        #calculate To Wall
+        #calculate To X Wall
         if self.x < 0:
             self.x = 0
 
         if self.x + self.w > self.world.worldSizeX:
             self.x = self.world.worldSizeX - self.w
+
+        #calculate To Y Wall
+        if self.y < 0:
+            self.y = 0
+
+        if self.y + self.h > self.world.worldSizeY:
+            self.y = self.world.worldSizeY - self.h
 
     def decideDraw(self, obj: entity) -> bool:
         return (
