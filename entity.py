@@ -6,11 +6,16 @@ class entity:
         self.y = _y
         self.z = _z
 
+        self.velX = 0
+        self.velY = 0
+
         self.w = _w
         self.h = _h
 
         self.tranX = 0
         self.tranY = 0
+
+        self.world = None
 
         self.name = _name
 

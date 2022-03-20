@@ -9,7 +9,7 @@ clock = pygame.time.Clock()
 g = game(screen)
 
 while True:
-    dt = clock.tick(settings.FPS)
+    dt = clock.tick(settings.FPS) / 100
     keys = pygame.key.get_pressed()
 
     for event in pygame.event.get():
@@ -22,4 +22,5 @@ while True:
     g.update(dt, keys)
     g.draw()
 
+    pygame.display.set_caption(f"ULTIMATE MONKEY GAME | FPS: {clock.get_fps()}")
     pygame.display.update()

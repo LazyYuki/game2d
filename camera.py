@@ -1,5 +1,6 @@
-from tkinter import Y
+import settings
 from entity import *
+from player import player
 
 class camera:
     def __init__(self, _x, _y, _w, _h) -> None:
@@ -8,25 +9,25 @@ class camera:
         self.w = _w
         self.h = _h
 
+        self.world = None
+
     def translate(self, obj: entity):
         obj.tranX = obj.x - self.x
         obj.tranY = obj.y - self.y
 
+    def bindToPlayer(self, obj: player):
+        #calculate center
+        self.x = obj.x - settings.CENTERWIDTH
+        self.y = obj.y - settings.CENTERHEIGHT
+
+        #calculate To Wall
+        if self.x < 0:
+            self.x = 0
+
+        if self.x + self.w > self.world.worldSizeX:
+            self.x = self.world.worldSizeX - self.w
 
     def decideDraw(self, obj: entity) -> bool:
-        print(obj.name)
-        print(obj.x, obj.y, obj.w, obj.h)
-        print(self.x, self.y, self.w, self.h)
-
-        print(obj.x <= self.x + self.w)
-
-        print(obj.x + obj.w >= self.x)
-
-        print(obj.y <= self.y + self.h)
-
-        print(obj.y + obj.h >= self.y)
-        print("\n")
-
         return (
             #x Achse
             obj.x <= self.x + self.w and obj.x + obj.w >= self.x and

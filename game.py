@@ -21,6 +21,7 @@ class game:
         self.blockList = w.loadBlock()
 
         self.camera = w.camera
+        self.player = w.player
 
     def checkCollision(self, obj1: entity, obj2: entity):
         return (
@@ -58,6 +59,9 @@ class game:
             e.update(dt, keys, collisionList)
 
     def draw(self):
+        #bind camera To player
+        self.camera.bindToPlayer(self.player)
+
         b: block
         for b in self.blockList:
             if self.camera.decideDraw(b):
