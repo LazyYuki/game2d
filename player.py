@@ -2,10 +2,14 @@ import pygame, settings, math
 from entity import *
 
 class player(entity):
-    jumpHeight = 50
+    jumpHeight = 75
     g = (2*jumpHeight)/(math.pow(settings.GRAVITY, 2))
     initJumpVelocity = math.sqrt(2*g*jumpHeight)
     onGround = False
+
+    def loadCharacter(self, dirPath):
+        #TODO load all
+        pass
 
     def processKeys(self, keys, hitting):
         if keys[pygame.K_d]:
@@ -16,9 +20,15 @@ class player(entity):
         if "ground" in hitting:
             ground = hitting["ground"][0]
 
-            #doesnt touch from top
-            if self.y - self.velY <= ground.y:
+            #check bottom
+            if self.y <= ground.y + ground.h and self.y >= ground.y:
+                self.y = ground.y + ground.h
+                self.velY = 1
+
+            #check top
+            elif self.y + self.h <= ground.y + ground.h:
                 self.y = ground.y - self.h
+                self.velY = 0
                 self.onGround = True
         else: 
             self.onGround = False
@@ -34,6 +44,13 @@ class player(entity):
         self.x += self.velX * dt
         self.velX *= 0.95
 
+        if self.velX < 1 and self.velX > -1:
+            self.velX = 0
+        else:
+            #TODO: PlayerAnimation
+
+            pass
+
         if self.x <= 0:
             self.x = 0
 
@@ -47,4 +64,4 @@ class player(entity):
 
 
     def draw(self, screen):
-        pygame.draw.rect(screen, settings.GREEN, (self.tranX, self.tranY, self.h, self.w))
+        pygame.draw.rect(screen, settings.GREEN, (self.tranX, self.tranY, self.w, self.h))

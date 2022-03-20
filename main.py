@@ -22,5 +22,5 @@ while True:
     g.update(dt, keys)
     g.draw()
 
-    pygame.display.set_caption(f"ULTIMATE MONKEY GAME | FPS: {clock.get_fps()}")
+    pygame.display.set_caption(f"ULTIMATE MONKEY GAME | FPS: {round(clock.get_fps())}")
     pygame.display.update()

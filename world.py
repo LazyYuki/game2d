@@ -21,7 +21,7 @@ class world:
         self.worldSizeX = 1300
         self.worldSizeY = 1600
 
-        p = player(0, self.worldSizeY-30, 0, 10, 10, "player")
+        p = player(0, self.worldSizeY-50, 0, 30, 50, "player")
         p.world = self
 
         ground = block(0, self.worldSizeY-20, 0, self.worldSizeX, 20, "ground", settings.WHITE)

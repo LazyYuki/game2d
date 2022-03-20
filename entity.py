@@ -17,6 +17,9 @@ class entity:
 
         self.world = None
 
+        self.characterIMG = None
+        self.walkingAnimation = []
+
         self.name = _name
 
     def update(self, dt, keys, hitting):
