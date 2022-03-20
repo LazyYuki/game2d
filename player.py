@@ -24,11 +24,33 @@ class player(entity):
         elif keys[pygame.K_a]:
             self.velX = -20
 
+        if "wall" in hitting:
+            wall = hitting["wall"][0]
+            direction = 0
+
+            if self.x + self.w >= wall.x and self.x < wall.x + wall.w - 3:
+                self.x = wall.x - self.w
+                self.velX = 0
+                direction = 2
+
+            if self.x <= wall.x + wall.w and self.x > wall.x + 3:
+                self.x = wall.x + wall.w
+                self.velX = 0
+                direction = 1
+
+
+            if keys[pygame.K_d] and direction != 2:
+                self.velX = 20
+            elif keys[pygame.K_a] and direction != 1:
+                self.velX = -20
+            
+
+
         if "ground" in hitting:
             ground = hitting["ground"][0]
 
             #check bottom
-            if self.y <= ground.y + ground.h and self.y >= ground.y:
+            if self.y < ground.y + ground.h and self.y > ground.y:
                 self.y = ground.y + ground.h
                 self.velY = 1
 

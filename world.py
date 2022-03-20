@@ -27,13 +27,19 @@ class world:
         ground = block(0, self.worldSizeY-20, 0, self.worldSizeX, 20, "ground", settings.WHITE)
 
         #test level
+
+        #TODO: make wall entity inheriting block
+
         p1 = block(100, self.worldSizeY - 300, 0, 200, 30, "ground", settings.WHITE)
         p2 = block(200, self.worldSizeY - 200, 0, 300, 30, "ground", settings.WHITE)
         p3 = block(500, self.worldSizeY - 400, 0, 100, 30, "ground", settings.WHITE)
 
+        p4 = block(400, self.worldSizeY-100, 0, 30, 10, "ground", settings.WHITE)
+        w1 = block(400, self.worldSizeY-90, 0, 30, 90, "wall", settings.WHITE)
+
         self.entityList.append(p)
 
-        self.blockList = [ground, p1, p2, p3]
+        self.blockList = [ground, p1, p2, p3, w1, p4]
 
         self.camera = camera(0, self.worldSizeY - settings.HEIGHT, settings.WIDTH, settings.HEIGHT)
         self.camera.world = self
