@@ -2,7 +2,7 @@ import pygame, settings, math
 from entity import *
 
 class player(entity):
-    jumpHeight = 75
+    jumpHeight = 300
     g = (2*jumpHeight)/(math.pow(settings.GRAVITY, 2))
     initJumpVelocity = math.sqrt(2*g*jumpHeight)
     onGround = False
