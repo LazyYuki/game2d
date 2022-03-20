@@ -25,8 +25,13 @@ class world:
 
         ground = block(0, self.worldSizeY-20, 0, self.worldSizeX, 20, "ground", settings.WHITE)
 
+        #test level
+        p1 = block(100, self.worldSizeY - 300, 0, 200, 30, "ground", settings.WHITE)
+        p2 = block(300, self.worldSizeY - 200, 0, 100, 30, "ground", settings.WHITE)
+
         self.entityList.append(p)
-        self.blockList.append(ground)
+
+        self.blockList = [ground, p1, p2]
 
     def loadWorldFromFile():
         #TODO load from file
